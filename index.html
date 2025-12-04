@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="calc">
+
+    
+    <input id="screen" type="text" readonly>
+
+    <!-- دکمه عملگر های سینوس و... -->
+    <div class="row">
+        <!-- سینوس -->
+         <button class="pro" onclick="sinBtn()">sin</button>
+      <script>
+        function sinBtn(){ 
+          let v = Number(document.getElementById('screen').value);
+          let r = v * Math.PI / 180;
+          document.getElementById('screen').value = Math.sin(r);
+        }
+      </script>
+     
+     <!-- کسینوس -->
+ <button class="pro" onclick="cosBtn()">cos</button>
+      <script>
+        function cosBtn(){
+          let v = Number(document.getElementById('screen').value);
+          let r = v * Math.PI / 180;
+          document.getElementById('screen').value = Math.cos(r);
+        }
+      </script>
+     
+     <!-- تانژانت -->
+<button class="pro" onclick="tanBtn()">tan</button>
+      <script>
+        function tanBtn(){
+          let v = Number(document.getElementById('screen').value);
+          let r = v * Math.PI / 180;
+          document.getElementById('screen').value = Math.tan(r);
+        }
+      </script>
+      
+      <!-- لوگاریتم -->
+<button class="pro" onclick="logBtn()">log</button>
+      <script>
+        function logBtn(){
+          let v = Number(document.getElementById('screen').value);
+          if(v <= 0){ document.getElementById('screen').value = 'خطا'; return; }
+          document.getElementById('screen').value = Math.log10(v);
+        }
+      </script>
+      
+      <!-- جزر -->
+ <button class="pro" onclick="sqrtBtn()">√</button>
+      <script>
+        function sqrtBtn(){
+          let v = Number(document.getElementById('screen').value);
+          if(v < 0){ document.getElementById('screen').value = 'خطا'; return; }
+          document.getElementById('screen').value = Math.sqrt(v);
+        }
+      </script>
+     
+     <!-- توان -->
+ <button class="pro" onclick="powBtn()">xʸ</button>
+      <script>
+        function powBtn(){
+          let val = prompt('عدد و توان را با کاما وارد کن، مثال: 2,3');
+          let parts = val.split(',');
+          if(parts.length !== 2){ alert('فرمت اشتباه'); return; }
+          let base = Number(parts[0]);
+          let exp  = Number(parts[1]);
+          document.getElementById('screen').value = Math.pow(base, exp);
+        }
+      </script>
+     
+    </div>
+
+    <!-- ردیف دکمه‌های اعداد و عملگرها -->
+    <div class="grid">
+        <!-- 7 -->
+ <button class="num" onclick="btn7()">7</button>
+      <script> 
+      function btn7(){
+         document.getElementById('screen').value += '7';
+          } 
+          </script>
+     
+     <!-- 8 -->
+ <button class="num" onclick="btn8()">8</button>
+      <script>
+       function btn8(){
+         document.getElementById('screen').value += '8';
+          }
+           </script>
+     
+     <!-- 9 -->
+<button class="num" onclick="btn9()">9</button>
+      <script>
+       function btn9(){ 
+        document.getElementById('screen').value += '9';
+         } 
+         </script>
+      
+      <!-- تقسیم -->
+ <button class="op" onclick="opDiv()">/</button>
+      <script> 
+      function opDiv(){
+         document.getElementById('screen').value += '/';
+          } 
+          </script>
+     
+     <!-- 4 -->
+<button class="num" onclick="btn4()">4</button>
+      <script>
+       function btn4(){
+         document.getElementById('screen').value += '4';
+          } 
+          </script>
+      
+      <!-- 5 -->
+<button class="num" onclick="btn5()">5</button>
+      <script> 
+      function btn5(){ 
+        document.getElementById('screen').value += '5';
+         }
+          </script>
+      
+      <!-- 6 -->
+<button class="num" onclick="btn6()">6</button>
+      <script>
+       function btn6(){
+         document.getElementById('screen').value += '6';
+          } 
+          </script>
+      
+      <!-- ضرب -->
+ <button class="op" onclick="opMul()">*</button>
+      <script>
+       function opMul(){ 
+        document.getElementById('screen').value += '*';
+         } 
+         </script>
+     
+     <!-- 1 -->
+  <button class="num" onclick="btn1()">1</button>
+      <script> 
+      function btn1(){
+         document.getElementById('screen').value += '1';
+          } 
+          </script>
+    
+    <!-- 2 -->
+ <button class="num" onclick="btn2()">2</button>
+      <script> 
+      function btn2(){
+         document.getElementById('screen').value += '2'; 
+         } 
+         </script>
+     
+     <!-- 3 -->
+ <button class="num" onclick="btn3()">3</button>
+      <script> 
+      function btn3(){
+         document.getElementById('screen').value += '3';
+          } 
+          </script>
+     
+     <!-- تفریق -->
+ <button class="op" onclick="opSub()">-</button>
+      <script>
+       function opSub(){
+         document.getElementById('screen').value += '-';
+          } 
+          </script>
+     
+     <!-- 0 -->
+<button class="num" onclick="btn0()">0</button>
+      <script>
+       function btn0(){ 
+        document.getElementById('screen').value += '0';
+         } 
+         </script>
+      
+
+      <!-- نقطه -->
+      <button class="num" onclick="btnDot()">.</button>
+      <script> 
+      function btnDot(){
+         document.getElementById('screen').value += '.';
+          } 
+          </script>
+
+      <!-- مساوی -->
+      <button class="eq" onclick="equalsBtn()">=</button>
+      <script>
+        function equalsBtn(){
+          try{
+            document.getElementById('screen').value = eval(document.getElementById('screen').value);
+          }catch{
+            document.getElementById('screen').value = 'خطا';
+          }
+        }
+      </script>
+
+      <!-- جمع -->
+      <button class="op" onclick="opAdd()">+</button>
+      <script>
+       function opAdd(){ 
+        document.getElementById('screen').value += '+';
+         } 
+         </script>
+
+    </div>
+
+    <!--  پاک‌کردن و  مبنا -->
+   
+    <div class="row">
+         <button class="op" onclick="clearBtn()">C</button>
+      <script>
+         function clearBtn(){ 
+            document.getElementById('screen').value = '';
+             } 
+             </script>
+     
+  <button class="pro" onclick="convertBtn()">تبدیل مبنا</button>
+     <script>
+        function convertBtn(){
+          let num = prompt('عدد را وارد کن:');
+          let fromB = Number(prompt('از مبنا (2/8/10):'));
+          let toB = Number(prompt('به مبنا (2/8/10):'));
+          let dec = parseInt(num, fromB);
+          if(isNaN(dec)){ document.getElementById('screen').value = 'خطا'; return; }
+          document.getElementById('screen').value = dec.toString(toB);
+        }
+      </script>
+    </div>
+
+  </div>
+
+</body>
+</html>
